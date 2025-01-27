@@ -1,0 +1,89 @@
+import React from "react";
+import { Button } from "./ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { LogIn, User, Settings, LogOut, Star } from "lucide-react";
+
+interface HeaderProps {
+  isLoggedIn?: boolean;
+  user?: {
+    name: string;
+    avatar: string;
+    isPremium: boolean;
+  };
+  onLogin?: () => void;
+  onLogout?: () => void;
+}
+
+const Header = ({
+  isLoggedIn = false,
+  user = {
+    name: "John Doe",
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=john",
+    isPremium: false,
+  },
+  onLogin = () => {},
+  onLogout = () => {},
+}: HeaderProps) => {
+  return (
+    <header className="w-full h-[72px] bg-white border-b border-gray-200 px-4 lg:px-8 fixed top-0 z-50">
+      <div className="max-w-7xl mx-auto h-full flex items-center justify-between">
+        {/* Logo */}
+        <div className="flex items-center">
+          <h1 className="text-2xl font-bold">Blog Platform</h1>
+        </div>
+
+        {/* Auth Section */}
+        <div className="flex items-center space-x-4">
+          {isLoggedIn ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="relative">
+                  <Avatar className="h-8 w-8">
+                    <AvatarImage src={user.avatar} />
+                    <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                  {user.isPremium && (
+                    <div className="absolute -top-1 -right-1">
+                      <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
+                    </div>
+                  )}
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem
+                  onClick={() => (window.location.href = "/profile")}
+                >
+                  <User className="mr-2 h-4 w-4" />
+                  Profile
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Settings className="mr-2 h-4 w-4" />
+                  Settings
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={onLogout}>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  Logout
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Button onClick={onLogin}>
+              <LogIn className="mr-2 h-4 w-4" />
+              Login
+            </Button>
+          )}
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;
