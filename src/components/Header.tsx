@@ -8,7 +8,8 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { LogIn, User, Settings, LogOut, Star } from "lucide-react";
+import { LogIn, User, Settings, LogOut, Star, Search } from "lucide-react";
+import { Input } from "./ui/input";
 
 interface HeaderProps {
   isLoggedIn?: boolean;
@@ -19,6 +20,7 @@ interface HeaderProps {
   };
   onLogin?: () => void;
   onLogout?: () => void;
+  onSearch?: (query: string) => void;
 }
 
 const Header = ({
@@ -30,13 +32,31 @@ const Header = ({
   },
   onLogin = () => {},
   onLogout = () => {},
+  onSearch = (query: string) => {},
 }: HeaderProps) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onSearch(e.target.value);
+  };
+
   return (
     <header className="w-full h-[72px] bg-white border-b border-gray-200 px-4 lg:px-8 fixed top-0 z-50">
       <div className="max-w-7xl mx-auto h-full flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
-          <h1 className="text-2xl font-bold">Blog Platform</h1>
+          <h1 className="text-2xl font-bold">Jagodev</h1>
+        </div>
+
+        {/* Search */}
+        <div className="flex-1 max-w-xl hidden sm:block">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <Input
+              type="search"
+              placeholder="Search..."
+              className="w-full pl-10 bg-gray-50 border-gray-200"
+              onChange={handleSearch}
+            />
+          </div>
         </div>
 
         {/* Auth Section */}

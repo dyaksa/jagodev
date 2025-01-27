@@ -60,7 +60,7 @@ const UserProfile = ({
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
+    <div className="max-w-3xl mx-auto p-20">
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl font-bold">Edit Profile</CardTitle>
