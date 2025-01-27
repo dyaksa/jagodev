@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { LogIn, User, Settings, LogOut, Star, Search } from "lucide-react";
+import { LogIn, User, Settings, LogOut, Star, Search, Rss } from "lucide-react";
 import { Input } from "./ui/input";
 
 interface HeaderProps {
@@ -43,7 +43,12 @@ const Header = ({
       <div className="max-w-7xl mx-auto h-full flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
-          <h1 className="text-2xl font-bold">Jagodev</h1>
+          <h1
+            onClick={() => (window.location.href = "/")}
+            className="text-2xl font-bold"
+          >
+            Jagodev
+          </h1>
         </div>
 
         {/* Search */}
@@ -82,6 +87,12 @@ const Header = ({
                 >
                   <User className="mr-2 h-4 w-4" />
                   Profile
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => (window.location.href = "/feed")}
+                >
+                  <Rss className="mr-2 h-4 w-4" />
+                  Feed
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <Settings className="mr-2 h-4 w-4" />

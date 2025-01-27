@@ -8,7 +8,6 @@ import UserDetailPage from "./components/UserDetailPage";
 import TagPage from "./components/TagPage";
 import NotFound from "./components/NotFound";
 import Layout from "./components/Layout";
-// import routes from "tempo-routes";
 
 function App() {
   return (
@@ -18,7 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/article/:id" element={<ArticleDetail />} />
-          <Route path="/following" element={<FollowingPage />} />
+          <Route path="/feed" element={<FollowingPage />} />
           <Route path="/detail/:username" element={<UserDetailPage />} />
           <Route path="/tag/:tag" element={<TagPage />} />
           <Route path="*" element={<NotFound />} />

@@ -82,6 +82,7 @@ const StaffPicks = ({
               <button
                 key={index}
                 className="px-4 py-2 rounded-full border border-gray-200 hover:border-gray-900 text-sm transition-colors"
+                onClick={() => (window.location.href = `/tag/${category.name}`)}
               >
                 {category.name}
               </button>

@@ -1,5 +1,5 @@
 import ArticleCard from "./ArticleCard";
-import StaffPicks from "./StaffPicks";
+import LatestArticle from "./LatestArticle";
 
 const TagPage = ({
   articles = [
@@ -85,7 +85,7 @@ const TagPage = ({
       <main className="pt-[72px]">
         <div className="max-w-screen-xl mx-auto px-4 flex gap-6 py-6">
           <div className="w-[400px] sticky top-[88px] h-[calc(100vh-88px)] overflow-y-auto">
-            <StaffPicks />
+            <LatestArticle />
           </div>
           <div className="max-w-[680px]">
             <div className="divide-y">
